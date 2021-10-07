@@ -1,0 +1,13 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: adoptopenjdk/openjdk11
+  script:
+    - ./gradlew --no-daemon clean test build shadowJar
+  artifacts:
+    paths:
+      - build/
+  only:
+    - master
